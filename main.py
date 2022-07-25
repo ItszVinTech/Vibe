@@ -21,7 +21,7 @@ engine.setProperty('voice', voices[1].id)
 
 
 RUNNING = True
-master = ' ,VJ'
+master = ' ,(yournamehere)'
 assistant = 'computer'
 
 def kelvinToCelsius(kelvin):
