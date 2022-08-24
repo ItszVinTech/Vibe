@@ -1,4 +1,10 @@
 import speech_recognition as sr
+import tkinter as tk
+from tkinter import PhotoImage
+from tkinter import messagebox
+from tkinter import Canvas
+from tkinter import Label
+import threading
 import json
 import pyttsx3
 import random
@@ -77,7 +83,7 @@ def take_cmd():
         pass     
     return command
 
-def axela():
+def assistant():
     command = take_cmd()
     print(command)
 
@@ -168,5 +174,31 @@ def axela():
         webbrowser.open('https://www.google.com/search?q=' + command)
         song = AudioSegment.from_wav("end.wav")
         play(song)
-while RUNNING == True:
-    axela()
+
+
+if RUNNING == True:
+    def on_close():
+
+     close = messagebox.askokcancel("Close", "Exit?")
+     if close:
+          root.destroy()
+    
+    root = tk.Tk()
+    root.geometry("768x1024")
+
+    bg = PhotoImage(file="wp1.gif")
+    label1 = Label( root, image = bg)
+    label1.place(x = 0, y = 0)
+
+    button = PhotoImage(file="Mic.png")
+
+    button_qwer = tk.Button(root, text="Alexa", image=button, command=assistant)
+    button_qwer.pack()
+    button_qwer.place(x = 350, y = 512)
+
+    root.protocol("WM_DELETE_WINDOW",  on_close)
+
+    root.resizable(False, False)
+
+    root.mainloop()
+    
